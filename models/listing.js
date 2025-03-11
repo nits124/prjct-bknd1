@@ -32,6 +32,8 @@ const listingSchema = new Schema({
 listingSchema.post("findOneAndDelete",async (listing)=>{
   if(listing){
     await Review.deleteMany({_id: {$in: listing.reviews}});
+    //This deletes multiple documents in the Review collection that match the given query.
+    //$in is a MongoDB operator that matches any value inside an array.Find all Review documents where _id exists in the listing.reviews array.Delete all of them.
   }
 });
 

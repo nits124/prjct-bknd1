@@ -14,6 +14,10 @@
           <div class="card-body">
             <p class="card-text"><b><%= listing.title %></b> <br>
               &#8377;<%= listing.price.toLocaleString("en-IN") %> /night
+              <!-- .toLocaleString("en-IN")	Formats the number using the Indian numbering system (lakhs, crores). -->
+              <!-- Input Price	Formatted Output (en-IN)
+              1000000	10,00,000 (10 lakh) -->
+
             </p>
           </div> 
         </div></a>

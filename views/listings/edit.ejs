@@ -3,6 +3,11 @@
     <div class="col-8 offset-2">
       <h3>Edit your Listing</h3>
       <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation">
+        <!-- Why method="POST" Instead of PUT?
+HTML forms do NOT support PUT, PATCH, or DELETE—they only support GET and POST.
+To bypass this limitation, Express apps use a method override (?_method=PUT). -->
+<!-- Disables default browser or HTML5 validation with novalidate,This means JavaScript or server-side validation is required instead. -->
+<!-- Bootstrap uses .needs-validation to apply custom validation styles. -->
         <div class="mb-3">
           <label for="title" class="form-label">title</label>
           <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control" required />
@@ -18,10 +23,20 @@
           <label for="image" class="form-label">Image Link</label>
           <input name="listing[image]" value="<%= listing.image %>" type="text" class="form-control" required />
           <div class="valid-feedback">image should be valid</div>
-        </div>
+          <!-- // Applies consistent styling across form fields
+          ✅ Increases padding & font size for better readability
+          ✅ Ensures full-width input fields for better UI -->
+          <!-- iv class="invalid-feedback">Title is required!</div>
+is-invalid adds a red border for errors.
+is-valid adds a green border for success. -->
         <div class="row">
           <div class="mb-3 col-md-4">
             <label for="price" class="form-label">price</label>
+            <!-- Adds proper spacing between the label and input field
+            ✅ Increases font size for better readability
+            ✅ Ensures consistency across form designs
+            ✅ Works with Bootstrap’s grid system for responsive layouts -->
+
             <input name="listing[price]" value="<%= listing.price %>" type="number" class="form-control" required />
             <div class="valid-feedback">price should be valid</div>
           </div>
